@@ -1,4 +1,4 @@
-package com.example.dagger2_rxjava_mvp;
+package com.example.dagger2_rxjava_mvp.base;
 
 
 import android.app.ProgressDialog;
