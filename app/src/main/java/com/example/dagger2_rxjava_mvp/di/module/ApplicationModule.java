@@ -1,6 +1,8 @@
 package com.example.dagger2_rxjava_mvp.di.module;
 
 
+import android.content.Context;
+
 import java.util.concurrent.TimeUnit;
 
 import javax.inject.Named;
@@ -19,8 +21,10 @@ public class ApplicationModule {
 
 
     private String mBaseUrl;
+    private Context mContext;
 
-    public ApplicationModule(String baseUrl) {
+    public ApplicationModule(Context context,String baseUrl) {
+        mContext=context;
         mBaseUrl = baseUrl;
     }
 
@@ -71,5 +75,10 @@ public class ApplicationModule {
                             .addCallAdapterFactory(adapterFactory)
                             .client(client)
                             .build();
+    }
+    @Singleton
+    @Provides
+    Context provideContext(){
+        return mContext;
     }
 }
