@@ -11,9 +11,9 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import io.reactivex.Observable;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
+import io.reactivex.Observable;
 
 public class CakePresenter extends BasePresenter<MainView> implements Observer<CakeResponse> {
  @Inject protected CakeApiService apiService;
@@ -23,7 +23,7 @@ public class CakePresenter extends BasePresenter<MainView> implements Observer<C
     }
 
     public void getCakes() {
-        getView().onShowDialog("Wait a Minutes, Cakes Loading...");
+        getView().onShowDialog("Wait a Minute, Cakes Loading...");
         Observable<CakeResponse> cakesResponseObservable = apiService.getCakes();
          subscribe(cakesResponseObservable,this);
 

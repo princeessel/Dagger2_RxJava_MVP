@@ -17,7 +17,7 @@ public class CakeMapper {
     public List<Cake> mapCakes(CakeResponse response){
         List<Cake> cakeList=new ArrayList<>();
         if(response!=null){
- CakesItem[] cakesItemsList= response.getCakes();
+ List<CakesItem> cakesItemsList= response.getCakes();
             if(cakesItemsList!=null){
                 for(CakesItem cake: cakesItemsList){
                   Cake myCake=new Cake();

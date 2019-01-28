@@ -4,6 +4,7 @@ import android.app.Application;
 
 import com.example.dagger2_rxjava_mvp.di.component.ApplicationComponent;
 import com.example.dagger2_rxjava_mvp.di.component.DaggerApplicationComponent;
+import com.example.dagger2_rxjava_mvp.di.module.ApplicationModule;
 
 public class CakeApplication extends Application {
 
@@ -15,7 +16,9 @@ public class CakeApplication extends Application {
     }
 
     private void initializeApplicationComponent() {
-        mApplicationComponent=DaggerApplicationComponent.builder().build();
+        mApplicationComponent=DaggerApplicationComponent.builder()
+                .applicationModule(new ApplicationModule(this, "https://gist.githubusercontent.com"))
+                .build();
     }
 
     public ApplicationComponent getApplicationComponent(){

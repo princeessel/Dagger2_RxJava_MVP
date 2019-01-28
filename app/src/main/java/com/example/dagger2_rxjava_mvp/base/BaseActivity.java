@@ -5,20 +5,22 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.CallSuper;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
 import com.example.dagger2_rxjava_mvp.application.CakeApplication;
 import com.example.dagger2_rxjava_mvp.di.component.ApplicationComponent;
+
+import butterknife.ButterKnife;
 
 public abstract class BaseActivity extends AppCompatActivity {
 
 private ProgressDialog progressDialog;
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate( Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getContentView());
+        ButterKnife.bind(this);
         onViewReady(savedInstanceState,getIntent());
 
     }
@@ -27,6 +29,12 @@ private ProgressDialog progressDialog;
 @CallSuper
     protected void onViewReady(Bundle savedInstanceState, Intent intent) {
   resolveDaggerDependency();
+    }
+
+    @Override
+    protected void onDestroy() {
+//        ButterKnife.unbind(this);
+        super.onDestroy();
     }
 
     protected void resolveDaggerDependency() {
